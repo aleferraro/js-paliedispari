@@ -10,12 +10,36 @@ Dichiariamo chi ha vinto.
 // definisco le variabili
 var evenOdd;
 var userNumber;
-var myNumber = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+
+// funzione che genera numero random da 1 a 5
+function numberOneToFive (num){
+  var num = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+  return num;
+}
+
+var myNumber = numberOneToFive(myNumber);
 console.log('myNumber', myNumber);
 
 // ricerca dell'elemento 'tasto gioca'
 var play = document.getElementById('gioca');
 
+
+//funzione che vede se la somma è pari o dispari
+function evenOrOdd (num1, num2){
+  var somma = num1 + num2;
+
+  if ((somma % 2 == 0) && (evenOdd == 'even')){
+    document.getElementById('result').innerHTML = 'Pari! Hai Vinto!';
+  } else if ((somma % 2 == 0) && (evenOdd == 'odd')){
+    document.getElementById('result').innerHTML = 'Pari! Hai Perso!';
+  } else if ((somma % 2 == 1) && (evenOdd == 'odd')){
+    document.getElementById('result').innerHTML = 'Dispari! Hai Vinto!';
+  } else {
+    document.getElementById('result').innerHTML = 'Dispari! Hai Perso!';
+  }
+  console.log('somma', somma);
+  return
+}
 
 //al click del tasto 'gioca':
 play.addEventListener('click', function(){
@@ -28,17 +52,7 @@ play.addEventListener('click', function(){
   //mostro all'utente il numero estratto randomicamente
   document.getElementById('myNumber').innerHTML += myNumber;
 
-  //faccio la somma dei 2 numeri e vado a definire le condizioni del gioco
-  var somma = myNumber + userNumber;
-  console.log('somma', somma);
 
-  if ((somma % 2 == 0) && (evenOdd == 'even')){
-    document.getElementById('result').innerHTML = 'Pari! Hai Vinto!';
-  } else if ((somma % 2 == 0) && (evenOdd == 'odd')){
-    document.getElementById('result').innerHTML = 'Pari! Hai Perso!';
-  } else if ((somma % 2 == 1) && (evenOdd == 'odd')){
-    document.getElementById('result').innerHTML = 'Dispari! Hai Vinto!';
-  } else {
-    document.getElementById('result').innerHTML = 'Dispari! Hai Perso!';
-  }
+  //invoco la funzione per stabilire se è pari o dispari
+  evenOrOdd(userNumber, myNumber);
 })
