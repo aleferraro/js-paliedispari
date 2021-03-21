@@ -11,13 +11,14 @@ Dichiariamo chi ha vinto.
 var evenOdd;
 var userNumber;
 
-// funzione che genera numero random da 1 a 5
-function numberOneToFive (num){
-  var num = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+// funzione che genera numero random da min a max
+function randomByTo (min, max){
+  max++
+  var num = Math.floor(Math.random() * (max - min) + min);
   return num;
 }
 
-var myNumber = numberOneToFive(myNumber);
+var myNumber = randomByTo(1, 5);
 console.log('myNumber', myNumber);
 
 // ricerca dell'elemento 'tasto gioca'
